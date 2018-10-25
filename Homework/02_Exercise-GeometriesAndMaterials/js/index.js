@@ -30,17 +30,16 @@ function geometry(){
     scene.add(light2);
 
   // Create a Cube Mesh with basic material
-  sphere = new THREE.SphereGeometry(10, 40, 75);
+  sphere = new THREE.SphereGeometry(20, 30, 3);
   smallTorus = new THREE.TorusGeometry(30, 3, 16, 100);
-  mediumTorus = new THREE.TorusGeometry(40, 6, 16, 100);
+  mediumTorus = new THREE.TorusGeometry(40, 6, 3, 10);
   largeTorus= new THREE.TorusGeometry(60, 9, 16, 100);
   XLTorus= new THREE.TorusGeometry(90, 11, 16, 100);
+  XXLTorus= new THREE.TorusGeometry(120, 11, 3, 10);
 
   materialNormal = new THREE.MeshNormalMaterial();
   materialLambert = new THREE.MeshLambertMaterial({
   color: "#42cbf4",
-  transparent: true,
-  opacity: 1
 });
   materialWireBlue = new THREE.MeshBasicMaterial( { color: "#42cbf4", wireframe: true } );
   materialPhong = new THREE.MeshPhongMaterial({
@@ -63,18 +62,25 @@ materialStandard = new THREE.MeshStandardMaterial({
   roughness: 0.5,
   metalness: 0.5
 });
+materialTransparent = new THREE.MeshStandardMaterial({
+  color: 0x42cbf4,
+  transparent: true,
+  opacity: 0.5
+});
 
   sphere = new THREE.Mesh( sphere, materialLambert);
   smallTorus = new THREE.Mesh( smallTorus, materialNormal);
   mediumTorus = new THREE.Mesh( mediumTorus, materialPhong );
   largeTorus = new THREE.Mesh( largeTorus, materialStandard );
   XLTorus = new THREE.Mesh( XLTorus, materialWireBlue );
+  XXLTorus = new THREE.Mesh( XXLTorus, materialTransparent );
 
   sphere.position.z = -500;
   smallTorus.position.z = -500;
   mediumTorus.position.z = -500;
   largeTorus.position.z = -500;
   XLTorus.position.z = -500;
+  XXLTorus.position.z = -500;
 
   // Add mesh to scene
   scene.add( sphere );
@@ -82,6 +88,7 @@ materialStandard = new THREE.MeshStandardMaterial({
   scene.add( mediumTorus );
   scene.add( largeTorus );
   scene.add( XLTorus );
+  scene.add( XXLTorus );
 }
 
 // Render Loop
@@ -96,6 +103,8 @@ var render = function () {
   largeTorus.rotation.x -= 0.05;
   XLTorus.rotation.y -= 0.06;
   XLTorus.rotation.x += 0.06;
+  XXLTorus.rotation.y += 0.07;
+  XXLTorus.rotation.x += 0.07;
 
   renderer.setClearColor("#e0e0e0");
 
