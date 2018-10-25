@@ -35,14 +35,24 @@ function geometry(){
   //Create material
   materialNormal = new THREE.MeshNormalMaterial();
 
-  //Megre material and geometry
-  smallTorus = new THREE.Mesh( smallTorus, materialNormal);
+  //For Loop to merge material and geometry
+  let my = 0;
+  let mx = 0;
 
-  //Set position of mesh
-  smallTorus.position.z = -500;
+  for(let i =0; i<5; i++){
+    let smallTorusMesh = new THREE.Mesh( smallTorus, materialNormal);
 
-  // Add mesh to scene
-  scene.add( smallTorus );
+    //Postion of torus
+    smallTorusMesh.position.z = -500;
+    smallTorusMesh.position.y = my;
+    smallTorusMesh.position.x = mx;
+    my = (my * Math.PI) *2;
+    mx = (mx * Math.PI) *2;
+
+
+    // Add mesh to scene
+    scene.add( smallTorusMesh );
+  }
 }
 
 // Render Loop
@@ -50,11 +60,11 @@ var render = function () {
   requestAnimationFrame( render );
 
   //Animated rotation
-  smallTorus.rotation.y += 0.1;
-  smallTorus.rotation.x += 0.1;
+  // smallTorus.rotation.y += 0.1;
+  // smallTorus.rotation.x += 0.1;
 
 
-  renderer.setClearColor("#e0e0e0");
+  // renderer.setClearColor("#e0e0e0");
 
   // Render the scene
   renderer.render(scene, camera);
