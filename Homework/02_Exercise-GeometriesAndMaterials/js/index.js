@@ -95,16 +95,19 @@ materialTransparent = new THREE.MeshStandardMaterial({
 var render = function () {
   requestAnimationFrame( render );
 
+  sphere.rotation.z += 0.1;
   smallTorus.rotation.y += 0.1;
   smallTorus.rotation.x += 0.1;
   mediumTorus.rotation.y += 0.04;
   mediumTorus.rotation.x -= 0.04;
+  mediumTorus.rotation.z += 0.04;
   largeTorus.rotation.y -= 0.05;
   largeTorus.rotation.x -= 0.05;
   XLTorus.rotation.y -= 0.06;
   XLTorus.rotation.x += 0.06;
   XXLTorus.rotation.y += 0.07;
   XXLTorus.rotation.x += 0.07;
+  XXLTorus.rotation.z += 0.07;
 
   renderer.setClearColor("#e0e0e0");
 
