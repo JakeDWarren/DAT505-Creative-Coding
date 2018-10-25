@@ -29,85 +29,30 @@ function geometry(){
     var light2 = new THREE.PointLight(0x6bd2ff, 0.5);
     scene.add(light2);
 
-  // Create a Cube Mesh with basic material
-  sphere = new THREE.SphereGeometry(20, 30, 3);
+  // Create a geometry
   smallTorus = new THREE.TorusGeometry(30, 3, 16, 100);
-  mediumTorus = new THREE.TorusGeometry(40, 6, 3, 10);
-  largeTorus= new THREE.TorusGeometry(60, 9, 16, 100);
-  XLTorus= new THREE.TorusGeometry(90, 11, 16, 100);
-  XXLTorus= new THREE.TorusGeometry(120, 20, 3, 10);
 
+  //Create material
   materialNormal = new THREE.MeshNormalMaterial();
-  materialLambert = new THREE.MeshLambertMaterial({
-  color: "#42cbf4",
-});
-  materialWireBlue = new THREE.MeshBasicMaterial( { color: "#42cbf4", wireframe: true } );
-  materialPhong = new THREE.MeshPhongMaterial({
-  color: 0x42cbf4,
-  specular: 0xffffff,
-  shininess: 1000,
-  lightMap: null,
-  lightMapIntensity: 1,
-  bumpMap: null,
-  bumpScale: 1,
-  normalMap: null,
-  normalScale: 1,
-  displacementMap: null,
-  displacementScale: 1,
-  displacementBias: 0,
-  specularMap: null
-});
-materialStandard = new THREE.MeshStandardMaterial({
-  color: 0x42cbf4,
-  roughness: 0.5,
-  metalness: 0.5
-});
-materialTransparent = new THREE.MeshStandardMaterial({
-  color: 0x42cbf4,
-  transparent: true,
-  opacity: 0.5
-});
 
-  sphere = new THREE.Mesh( sphere, materialLambert);
+  //Megre material and geometry
   smallTorus = new THREE.Mesh( smallTorus, materialNormal);
-  mediumTorus = new THREE.Mesh( mediumTorus, materialPhong );
-  largeTorus = new THREE.Mesh( largeTorus, materialStandard );
-  XLTorus = new THREE.Mesh( XLTorus, materialWireBlue );
-  XXLTorus = new THREE.Mesh( XXLTorus, materialTransparent );
 
-  sphere.position.z = -500;
+  //Set position of mesh
   smallTorus.position.z = -500;
-  mediumTorus.position.z = -500;
-  largeTorus.position.z = -500;
-  XLTorus.position.z = -500;
-  XXLTorus.position.z = -500;
 
   // Add mesh to scene
-  scene.add( sphere );
   scene.add( smallTorus );
-  scene.add( mediumTorus );
-  scene.add( largeTorus );
-  scene.add( XLTorus );
-  scene.add( XXLTorus );
 }
 
 // Render Loop
 var render = function () {
   requestAnimationFrame( render );
 
-  sphere.rotation.z += 0.1;
+  //Animated rotation
   smallTorus.rotation.y += 0.1;
   smallTorus.rotation.x += 0.1;
-  mediumTorus.rotation.y += 0.04;
-  mediumTorus.rotation.x -= 0.04;
-  mediumTorus.rotation.z += 0.04;
-  largeTorus.rotation.y -= 0.05;
-  largeTorus.rotation.x -= 0.05;
-  XLTorus.rotation.y -= 0.06;
-  XLTorus.rotation.x += 0.06;
-  XXLTorus.rotation.y += 0.07;
-  XXLTorus.rotation.x += 0.07;
-  XXLTorus.rotation.z += 0.07;
+
 
   renderer.setClearColor("#e0e0e0");
 
