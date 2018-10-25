@@ -35,7 +35,7 @@ function geometry(){
   mediumTorus = new THREE.TorusGeometry(40, 6, 3, 10);
   largeTorus= new THREE.TorusGeometry(60, 9, 16, 100);
   XLTorus= new THREE.TorusGeometry(90, 11, 16, 100);
-  XXLTorus= new THREE.TorusGeometry(120, 11, 3, 10);
+  XXLTorus= new THREE.TorusGeometry(120, 20, 3, 10);
 
   materialNormal = new THREE.MeshNormalMaterial();
   materialLambert = new THREE.MeshLambertMaterial({
@@ -95,8 +95,8 @@ materialTransparent = new THREE.MeshStandardMaterial({
 var render = function () {
   requestAnimationFrame( render );
 
-  smallTorus.rotation.y += 0.03;
-  smallTorus.rotation.x += 0.03;
+  smallTorus.rotation.y += 0.1;
+  smallTorus.rotation.x += 0.1;
   mediumTorus.rotation.y += 0.04;
   mediumTorus.rotation.x -= 0.04;
   largeTorus.rotation.y -= 0.05;
